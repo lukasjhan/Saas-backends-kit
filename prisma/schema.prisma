@@ -73,3 +73,49 @@ enum NotificationType {
   SMS
   PUSH
 }
+
+model Subscription {
+  id               Int      @id @default(autoincrement())
+  userId           String
+  plan             Plan
+  amount           Float
+  currency         String
+  startDate        DateTime
+  endDate          DateTime
+  nextBillingDate  DateTime
+  status           SubscriptionStatus
+  paymentMethodId  Int
+  paymentMethod    PaymentMethod @relation(fields: [paymentMethodId], references: [id])
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model PaymentMethod {
+  id             Int      @id @default(autoincrement())
+  userId         String
+  type           PaymentMethodType
+  lastFourDigits String
+  expirationDate DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  subscriptions  Subscription[]
+}
+
+enum Plan {
+  FREE
+  BASIC
+  PREMIUM
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  EXPIRED
+}
+
+enum PaymentMethodType {
+  CREDIT_CARD
+  DEBIT_CARD
+  PAYPAL
+}
