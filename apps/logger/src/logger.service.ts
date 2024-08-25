@@ -1,5 +1,6 @@
-import { Injectable, LogLevel } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@app/common';
+import { LogLevel } from '@prisma/client';
 
 @Injectable()
 export class LoggerService {

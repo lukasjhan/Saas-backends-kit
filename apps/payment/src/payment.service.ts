@@ -3,9 +3,9 @@ import { PrismaService } from '@app/common';
 import {
   PaymentMethodType,
   Plan,
+  Subscription,
   SubscriptionStatus,
-} from '@app/common/types/payment';
-import { Subscription } from '@prisma/client';
+} from '@prisma/client';
 
 @Injectable()
 export class PaymentService {
