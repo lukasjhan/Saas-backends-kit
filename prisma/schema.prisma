@@ -44,3 +44,16 @@ enum LogLevel {
   WARN
   ERROR
 }
+
+model File {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  path      String
+  mimetype  String
+  size      Int
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
