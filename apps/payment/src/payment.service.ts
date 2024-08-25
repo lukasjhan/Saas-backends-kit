@@ -5,7 +5,7 @@ import {
   Plan,
   SubscriptionStatus,
 } from '@app/common/types/payment';
-import { Subscription } from 'rxjs';
+import { Subscription } from '@prisma/client';
 
 @Injectable()
 export class PaymentService {
@@ -37,7 +37,7 @@ export class PaymentService {
     });
   }
 
-  async getSubscription(userId: string): Promise<Subscription> {
+  async getSubscription(userId: string) {
     return this.prisma.subscription.findFirst({
       where: { userId, status: SubscriptionStatus.ACTIVE },
       include: { paymentMethod: true },
