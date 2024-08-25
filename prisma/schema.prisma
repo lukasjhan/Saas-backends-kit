@@ -119,3 +119,13 @@ enum PaymentMethodType {
   DEBIT_CARD
   PAYPAL
 }
+
+model User {
+  id            Int       @id @default(autoincrement())
+  userId        String    @unique
+  email         String    @unique
+  name          String?
+  profilePicture String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
