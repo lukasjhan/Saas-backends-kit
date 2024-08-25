@@ -25,3 +25,22 @@ model ApiKey {
   @@index([key])
   @@index([userId])
 }
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  level     LogLevel
+  message   String
+  category  String
+  timestamp DateTime @default(now())
+
+  @@index([timestamp])
+  @@index([level])
+  @@index([category])
+}
+
+enum LogLevel {
+  DEBUG
+  INFO
+  WARN
+  ERROR
+}
