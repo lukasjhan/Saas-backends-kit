@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { NotificationService } from './notification.service';
-import { NotificationType } from '@app/common/types/notification';
+import { NotificationType } from '@prisma/client';
 
 @Controller()
 export class NotificationController {
